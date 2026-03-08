@@ -50,10 +50,11 @@ Clone o repositório em `ros2_ws/src`:
 git clone https://github.com/lucasbme/arduinopy
 ```
 
-Configure a seguinte linha de acordo com sua porta serial e o *baud rate* do Arduino:
+Configure as seguintes constantes de acordo com sua porta serial e o *baud rate* do Arduino:
 
 ```python
-    self.ser = serial.Serial('/dev/ttyUSB0', 9600)
+SERIAL_PORT = "/dev/ttyUSB0"
+BAUD_RATE = 9600
 ```
 
 Compile:
@@ -65,7 +66,13 @@ colcon build --packages-select arduinopy
 source install/setup.bash
 ```
 
-Rode o nó:
+Primeiramente, conecte o *joystick* ao laptop e rode:
+
+```bash
+ros2 run joy joy_node
+```
+
+Com o Arduino conectado, rode o nó:
 
 ```bash
 ros2 run arduinopy serial_node
